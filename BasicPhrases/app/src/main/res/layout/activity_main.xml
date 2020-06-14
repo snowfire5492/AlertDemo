@@ -2,17 +2,115 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="64dp"
+        app:columnCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rowCount="4">
 
+        <Button
+            android:id="@+id/button1"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="doyouspeakenglish"
+            android:text="do you\n speak english?"
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/button2"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="goodevening"
+            android:text="Good Evening"
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/button3"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="hello"
+            android:text="Hello"
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/button4"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="howareyou"
+            android:text="how are you?"
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/button5"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="ilivein"
+            android:text="i live in..."
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/button6"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="mynameis"
+            android:text="my name is..."
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/button7"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="please"
+            android:text="please"
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+        <Button
+            android:id="@+id/button8"
+            android:gravity="fill"
+            android:onClick="speak"
+            android:tag="welcome"
+            android:text="welcome"
+            android:textAlignment="center"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            tools:ignore="RtlCompat" />
+
+    </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
