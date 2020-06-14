@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 Log.i("Location SeekBar", Integer.toString(i));
-                mPlayer.seekTo(i);
+                mPlayer.seekTo(i); 
             }
 
             @Override
