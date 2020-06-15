@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button pressedButton = (Button) view;
 
         Log.i("pressed", pressedButton.getTag().toString());
-        
+
         mediaPlayer = MediaPlayer.create(this,
                 getResources().getIdentifier(pressedButton.getTag().toString(), "raw", getPackageName()));
         mediaPlayer.start();
