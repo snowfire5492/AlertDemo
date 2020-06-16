@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("value", String.valueOf(i));
 
                 setTimer(i);
+                updateClock(i * 1000);
                 // update timer view in minutes and seconds
             }
 
@@ -58,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
             int temp = seconds;
             @Override
-            public void onTick(long l) {
-                // !!!! update the timer view - 1 second
+            public void onTick(long millisecondsRemaining) {
 
-                 Log.i("eggTimer", String.valueOf(temp--))   ;
+                updateClock(millisecondsRemaining);
+                Log.i("eggTimer", String.valueOf(temp--))   ;
             }
 
             @Override
@@ -69,6 +71,23 @@ public class MainActivity extends AppCompatActivity {
                 alarmAudio.start();
             }
         };
+    }
+
+    public void updateClock(long millisecondsRemaining) {
+        int totalSecondsRemaining = (int) millisecondsRemaining / 1000;
+
+        int minutes = totalSecondsRemaining / 60;
+        int seconds = totalSecondsRemaining % 60;
+
+        TextView clockDisplay = findViewById(R.id.timeDisplayed);
+
+//        if(seconds % 10 != 0) {
+//            clockDisplay.setText(minutes +  ":" + seconds + "0");
+//        }else {
+        clockDisplay.setText(minutes + ":" + seconds);
+        //}
+
+
     }
 
 
@@ -105,5 +124,6 @@ public class MainActivity extends AppCompatActivity {
         timeControl.setEnabled(true);
 
         setTimer(30);
+        updateClock(30000);
     }
 }
