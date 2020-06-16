@@ -16,15 +16,16 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    ListView timesTableList;
+    private ListView timesTableList;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         timesTableList = findViewById(R.id.listView);
+        SeekBar operandSelector = findViewById(R.id.seekBar);
 
         List<Integer> results = new ArrayList<>();
         for (int i = 1; i <= 20; ++i) {
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         }
         changeList(results);
 
-        SeekBar operandSelector = findViewById(R.id.seekBar);
 
         operandSelector.setMax(13);
         operandSelector.setMin(1);
@@ -67,5 +67,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<Integer>(this, layout.simple_list_item_1, input);
 
         timesTableList.setAdapter(arrayAdapter);
+
+
     }
 }
