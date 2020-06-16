@@ -81,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
         TextView clockDisplay = findViewById(R.id.timeDisplayed);
 
-//        if(seconds % 10 != 0) {
-//            clockDisplay.setText(minutes +  ":" + seconds + "0");
-//        }else {
-        clockDisplay.setText(minutes + ":" + seconds);
-        //}
+        if(seconds < 10) {
+            clockDisplay.setText(minutes +  ":0" + seconds);
+        }else {
+            clockDisplay.setText(minutes + ":" + seconds);
+        }
 
 
     }
@@ -103,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 stop();
             }
         });
-       // btn.setOnContextClickListener(stop));
+
+
     }
 
 
@@ -126,4 +127,6 @@ public class MainActivity extends AppCompatActivity {
         setTimer(30);
         updateClock(30000);
     }
+
+
 }
