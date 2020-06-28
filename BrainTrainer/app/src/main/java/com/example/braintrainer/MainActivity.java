@@ -181,12 +181,13 @@ public class MainActivity extends AppCompatActivity {
                 if (result.getVisibility() != View.VISIBLE){
                     result.setVisibility(View.VISIBLE);
                 }
-                result.setText("Done!");
+
 
                 Button playAgainBtn = (Button) findViewById(R.id.playAgainButton);
                 playAgainBtn.setVisibility(View.VISIBLE);
                 playAgainBtn.setClickable(true);
                 updateDisplaytimer(0);
+                result.setText("Done!");
             }
         };
     }
