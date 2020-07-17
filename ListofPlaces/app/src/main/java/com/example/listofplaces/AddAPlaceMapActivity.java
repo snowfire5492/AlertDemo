@@ -86,57 +86,61 @@ public class AddAPlaceMapActivity extends FragmentActivity implements OnMapReady
         mMap.setOnMapLongClickListener(this);
 
 
+        if(intent.getIntExtra("placeNumber", -1) == 0) {
 
-
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        locationListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
+            locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            locationListener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
 //              Log.i("LOCATION", location.toString());
 
-                if ( intent.getIntExtra("placeNumber", 0) == 0) {
-                    // zoom in on user location
-                    centerMapOnLocation(location, "user");
+                    if (intent.getIntExtra("placeNumber", 0) == 0) {
+                        // zoom in on user location
+                        centerMapOnLocation(location, "user");
+
+                    }
 
                 }
 
-            }
+                @Override
+                public void onStatusChanged(String s, int i, Bundle bundle) {
 
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
+                }
 
-            }
+                @Override
+                public void onProviderEnabled(String s) {
 
-            @Override
-            public void onProviderEnabled(String s) {
+                }
 
-            }
+                @Override
+                public void onProviderDisabled(String s) {
 
-            @Override
-            public void onProviderDisabled(String s) {
+                }
+            };
 
-            }
-        };
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            } else {
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        } else {
 
-            if(intent.getIntExtra("placeNumber", -1) == 0) {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 1, locationListener);
                 Location lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 centerMapOnLocation(lastLocation, "lastLocation");
-            }else {
+
+
+
+            }
+        }else {
+            {
 
                 Location placeLocation = new Location(LocationManager.GPS_PROVIDER);
                 placeLocation.setLatitude(MainActivity.latlng.get(intent.getIntExtra("placeNumber", 0)).latitude);
                 placeLocation.setLongitude(MainActivity.latlng.get(intent.getIntExtra("placeNumber", 0)).longitude);
 
-                centerMapOnLocation( placeLocation, MainActivity.places.get(intent.getIntExtra("placeNumber", 0)));
+                centerMapOnLocation(placeLocation, MainActivity.places.get(intent.getIntExtra("placeNumber", 0)));
             }
-
-
         }
+
 
 
     }
