@@ -91,7 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 try {
                     List<Address> listAddresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
-                    if (listAddresses != null && listAddresses.size() > 0){
+                    if (listAddresses != null && listAddresses.size() > 0) {
                         Log.i("LocationInfo", listAddresses.get(0).toString());
 
                         String address = "";
@@ -99,9 +99,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         //address += listAddresses.get(0).getFeatureName() != null ? listAddresses.get(0).getFeatureName() : "";
 
                         address += listAddresses.get(0).getThoroughfare();
-                        
 
-                        address += listAddresses.get(0).getAddressLine(0) != null ? listAddresses.get(0).getAddressLine(0): "";
+
+                        address += listAddresses.get(0).getAddressLine(0) != null ? listAddresses.get(0).getAddressLine(0) : "";
 
                         Log.i("AddressCheck", address);
                     }
@@ -129,15 +129,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
 
-        if (Build.VERSION.SDK_INT < 23) {
-
-
-            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
-        }else {
+//        if (Build.VERSION.SDK_INT < 23) {
+//
+//
+//
+//            lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 200, 0, ll);
+//        }else {
             if (ContextCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions( this, new String[]{ Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             } else {
-                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
+                lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, 0, ll);
                 Location lastKnowUserLocation = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                 mMap.clear();
@@ -145,7 +146,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().position(userLocation).title("Current Location"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
             }
-        }
+//        }
 
 
 

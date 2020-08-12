@@ -94,11 +94,11 @@ public class AddAPlaceMapActivity extends FragmentActivity implements OnMapReady
                 public void onLocationChanged(Location location) {
 //              Log.i("LOCATION", location.toString());
 
-                    if (intent.getIntExtra("placeNumber", 0) == 0) {
-                        // zoom in on user location
-                        centerMapOnLocation(location, "user");
 
-                    }
+                    // zoom in on user location
+                    centerMapOnLocation(location, "user");
+
+
 
                 }
 
